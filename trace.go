@@ -2,10 +2,11 @@ package trace
 
 import (
 	"encoding/json"
-	"fabric/core/chaincode/shim"
-	pb "fabric/protos/peer"
 	"fmt"
 	"foodTrace/model"
+
+	"github.com/hyperledger/fabric/core/chaincode/shim"
+	pb "github.com/hyperledger/fabric/protos/peer"
 )
 
 type Food struct {
@@ -278,7 +279,7 @@ func (a *Food) getLogInfo(stub shim.ChaincodeStubInterface, args []string) pb.Re
 	return shim.Success(jsonsAsBytes)
 }
 
-func getLogInfo_l(stub shim.ChaincodeStubInterface, args []string) pb.Response {
+func (a *Food) getLogInfo_l(stub shim.ChaincodeStubInterface, args []string) pb.Response {
 	var Loginfo model.LogInfo
 
 	if len(args) != 1 {
